@@ -1,0 +1,20 @@
+<label>Server Name</label>
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)"> -->
+<input type="text" class="form-control" [(ngModel)]="serverName">
+<!-- <p> {{ serverName }}</p> -->
+<button class="btn btn-primary" [disabled]="!allowAddServer" (click)="onCreateServer()">Add Server</button>
+<!-- <p [innerText]="allowAddServer"></p> -->
+<!-- <p> {{ allowAddServer }}</p> -->
+<p *ngIf="isServerCreated; else noServer"> {{ serverCreationStatus }}</p>
+<ng-template #noServer>
+    <p>No server was created!</p>
+</ng-template>
+<app-server *ngFor="let server of servers"></app-server>
+
+<label>User Name</label>
+<input type="text" class="form-control" [(ngModel)]="userName">
+<p> {{ userName }}</p> 
+<button class="btn btn-primary" [disabled]="userName ==='' " (click)="resetUserName()">Reset User</button>
+
+<!-- the below doesn't work, why? -->
+<button class="btn btn-primary" [disabled]="isEmpty" (click)="resetUserName()">Reset User</button>

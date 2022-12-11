@@ -1,0 +1,27 @@
+<input type="text" [(ngModel)]="name">
+<p>{{ name }}</p>
+
+npm install --save bootstrap
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+dev tool->sources->styles.css: Bootstrap  v5.2.3
+
+<div>
+    <button class="btn btn-primary" (click)="onToggleDisplay()">Display Details</button>
+    <p *ngIf="showSecret">Secret Password = tuna</p>
+    <div *ngFor="let logItem of log;let idx=index"
+     [ngStyle]="{backgroundColor:(idx+1)>5?'green':'transparent'}"
+     [ngClass]="{'white-text':(idx+1)>5}"> {{logItem}} </div>
+</div>
+
+export class AppComponent {
+    showSecret: boolean = false;
+    log = [];
+
+    onToggleDisplay(){
+        this.showSecret = !this.showSecret;
+        this.log.push(new Date());
+    }
+}
